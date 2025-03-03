@@ -1,0 +1,45 @@
+<h2>Create Business Profile</h2>
+
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+  <!-- Name -->
+  <label>
+    Business Name:
+    <input type="text" formControlName="name" placeholder="Enter name" />
+  </label>
+  <div *ngIf="profileForm.get('name')?.invalid && profileForm.get('name')?.touched">
+    <p *ngIf="profileForm.get('name')?.errors?.['required']">Name is required.</p>
+    <p *ngIf="profileForm.get('name')?.errors?.['minlength']">Name must be at least 3 characters.</p>
+  </div>
+
+  <!-- Location -->
+  <label>
+    Location:
+    <input type="text" formControlName="location" placeholder="Enter location" />
+  </label>
+  <div *ngIf="profileForm.get('location')?.invalid && profileForm.get('location')?.touched">
+    Location is required.
+  </div>
+
+  <!-- Description -->
+  <label>
+    Description:
+    <textarea formControlName="description" placeholder="Enter description"></textarea>
+  </label>
+  <div *ngIf="profileForm.get('description')?.invalid && profileForm.get('description')?.touched">
+    <p *ngIf="profileForm.get('description')?.errors?.['required']">Description is required.</p>
+    <p *ngIf="profileForm.get('description')?.errors?.['maxlength']">Description must be under 500 characters.</p>
+  </div>
+
+  <!-- Logo Upload -->
+  <label>
+    Logo Upload:
+    <input type="file" (change)="onLogoChange($event)" />
+  </label>
+  <div *ngIf="profileForm.get('logo')?.invalid && profileForm.get('logo')?.touched">
+    Logo is required.
+  </div>
+  <img *ngIf="logoPreview" [src]="logoPreview" alt="Logo Preview" width="150" />
+
+  <!-- Submit Button -->
+  <button type="submit" [disabled]="profileForm.invalid">Submit</button>
+</form>

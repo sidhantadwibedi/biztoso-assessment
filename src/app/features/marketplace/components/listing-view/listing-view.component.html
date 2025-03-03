@@ -1,0 +1,48 @@
+<div class="listing-container">
+  <h2>🛒 Marketplace Listings</h2>
+
+  <!-- Create Button -->
+  <button class="create-button" (click)="navigateToCreate()">➕ Create New Listing</button>
+
+  <!-- ✅ Search & Filter Form -->
+  <form [formGroup]="filterForm" (ngSubmit)="applyFilters()" class="filter-container">
+    <input type="text" placeholder="🔍 Search by Title" formControlName="search" />
+
+    <label>
+      Min Price:
+      <input type="number" formControlName="minPrice" />
+    </label>
+
+    <label>
+      Max Price:
+      <input type="number" formControlName="maxPrice" />
+    </label>
+
+    <button type="submit">Apply Filters</button>
+  </form>
+
+  <!-- Listings -->
+  <div *ngIf="listings$ | async as listings">
+    <div *ngIf="listings.length; else noListings" class="listing-grid">
+      <div *ngFor="let listing of listings" class="listing-card">
+        <img *ngIf="listing.images.length" [src]="listing.images[0]" alt="Listing Image" />
+        
+        <div class="listing-details">
+          <h3>{{ listing.title }}</h3>
+          <p class="description">{{ listing.description }}</p>
+          <p class="price">💰 ${{ listing.price }}</p>
+        </div>
+
+        <div class="listing-actions">
+          <button (click)="navigateToEdit(listing.id)">✏️ Edit</button>
+          <button (click)="deleteListing(listing.id)">❌ Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- No Listings Found -->
+  <ng-template #noListings>
+    <p class="empty-message">No listings available. Try adjusting filters.</p>
+  </ng-template>
+</div>

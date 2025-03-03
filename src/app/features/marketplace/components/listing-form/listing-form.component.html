@@ -1,0 +1,51 @@
+<h2>{{ isEditMode ? 'Edit Listing' : 'Create Listing' }}</h2>
+
+<form [formGroup]="listingForm" (ngSubmit)="onSubmit()">
+
+  <!-- Title Field -->
+  <label>
+    Title:
+    <input type="text" formControlName="title" placeholder="Enter listing title" />
+  </label>
+  <div *ngIf="listingForm.get('title')?.invalid && listingForm.get('title')?.touched">
+    <p *ngIf="listingForm.get('title')?.errors?.['required']">Title is required.</p>
+    <p *ngIf="listingForm.get('title')?.errors?.['minlength']">Title must be at least 3 characters long.</p>
+  </div>
+
+  <!-- Description Field -->
+  <label>
+    Description:
+    <textarea formControlName="description" placeholder="Enter listing description"></textarea>
+  </label>
+  <div *ngIf="listingForm.get('description')?.invalid && listingForm.get('description')?.touched">
+    <p *ngIf="listingForm.get('description')?.errors?.['required']">Description is required.</p>
+    <p *ngIf="listingForm.get('description')?.errors?.['maxlength']">Maximum 500 characters allowed.</p>
+  </div>
+
+  <!-- Price Field -->
+  <label>
+    Price:
+    <input type="number" formControlName="price" placeholder="Enter price" />
+  </label>
+  <div *ngIf="listingForm.get('price')?.invalid && listingForm.get('price')?.touched">
+    <p *ngIf="listingForm.get('price')?.errors?.['required']">Price is required.</p>
+    <p *ngIf="listingForm.get('price')?.errors?.['min']">Price must be 0 or greater.</p>
+  </div>
+
+  <!-- Image Upload -->
+  <label>
+    Upload Images:
+    <input type="file" (change)="onImageChange($event)" multiple />
+  </label>
+  <div *ngIf="listingForm.get('images')?.invalid && listingForm.get('images')?.touched">
+    <p>At least one image is required.</p>
+  </div>
+
+  <div *ngFor="let img of imagesPreview">
+    <img [src]="img" width="150" />
+  </div>
+
+  <!-- Submit Button -->
+  <button type="submit" [disabled]="listingForm.invalid">Submit Listing</button>
+
+</form>

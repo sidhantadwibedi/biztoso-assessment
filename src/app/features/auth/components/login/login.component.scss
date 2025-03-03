@@ -1,0 +1,92 @@
+.auth-container {
+    max-width: 450px;
+    margin: 3rem auto;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    text-align: center;
+    transition: box-shadow 0.3s ease;
+  
+    &:hover {
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    }
+  
+    h2 {
+      color: #2c3e50;
+      margin-bottom: 1.5rem;
+      font-size: 2rem;
+    }
+  
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+  
+      label {
+        display: flex;
+        flex-direction: column;
+        font-size: 1rem;
+        color: #4a4a4a;
+        font-weight: 600;
+  
+        input {
+          margin-top: 0.5rem;
+          padding: 10px 12px;
+          font-size: 1rem;
+          border: 1px solid #aaa;
+          border-radius: 8px;
+          transition: border 0.3s ease;
+  
+          &:focus {
+            outline: none;
+            border-color: #4caf50;
+            box-shadow: 0 0 8px rgba(76, 175, 80, 0.3);
+          }
+        }
+      }
+  
+      button {
+        padding: 12px;
+        font-size: 1rem;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+  
+        &:hover:not(:disabled) {
+          background-color: #43a047;
+        }
+  
+        &:disabled {
+          background-color: #aaa;
+          cursor: not-allowed;
+        }
+      }
+    }
+  
+    .error {
+      color: #e74c3c;
+      font-size: 0.9rem;
+      margin-top: 1rem;
+    }
+  
+    p {
+      margin-top: 1.5rem;
+      font-size: 0.95rem;
+      color: #555;
+  
+      a {
+        color: #1e88e5;
+        text-decoration: none;
+        font-weight: bold;
+  
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+  

@@ -1,0 +1,50 @@
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 600px;
+    margin: 0 auto;
+  
+    label {
+      display: flex;
+      flex-direction: column;
+      font-weight: bold;
+    }
+  
+    input,
+    textarea {
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+  
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+  
+    img {
+      margin-top: 1rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    }
+  
+    button {
+      padding: 10px 20px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      &:disabled {
+        background-color: #aaa;
+        cursor: not-allowed;
+      }
+    }
+  
+    div {
+      color: #d32f2f;
+      font-size: 0.9rem;
+    }
+  }
+  

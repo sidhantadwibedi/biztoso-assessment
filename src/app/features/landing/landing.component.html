@@ -1,0 +1,50 @@
+<div class="landing-container">
+  <h1>Welcome to the Dashboard</h1>
+
+  <!-- Profile Management -->
+  <section class="profile-section">
+    <h2>👤 Your Business Profile</h2>
+
+    <div *ngIf="!isEditing">
+      <p><strong>Name:</strong> {{ userProfile?.name }}</p>
+      <p><strong>Email:</strong> {{ userProfile?.email }}</p>
+      <p><strong>Bio:</strong> {{ userProfile?.bio }}</p>
+      <button (click)="toggleEdit()">✏️ Edit Profile</button>
+    </div>
+
+    <!-- Edit Form -->
+    <form *ngIf="isEditing" [formGroup]="profileForm" (ngSubmit)="saveProfile()">
+      <label>
+        Name:
+        <input formControlName="name" type="text" required />
+      </label>
+
+      <label>
+        Email:
+        <input formControlName="email" type="email" required />
+      </label>
+
+      <label>
+        Bio:
+        <textarea formControlName="bio" maxlength="300"></textarea>
+      </label>
+
+      <button type="submit" [disabled]="profileForm.invalid">💾 Save</button>
+      <button type="button" (click)="toggleEdit()">❌ Cancel</button>
+    </form>
+  </section>
+
+  <!-- Business Profiles Section -->
+  <section class="section">
+    <h2>👥 Business Profiles</h2>
+    <button (click)="goToNetworking()">📄 Create Profile</button>
+    <button (click)="goToChat()">💬 Live Chat</button>
+  </section>
+
+  <!-- Marketplace Section -->
+  <section class="section">
+    <h2>🛒 Marketplace</h2>
+    <button (click)="goToMarketplace()">📋 View Listings</button>
+    <button (click)="goToCreateListing()">➕ Create Listing</button>
+  </section>
+</div>

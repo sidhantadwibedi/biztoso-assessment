@@ -1,0 +1,34 @@
+<div class="lead-container">
+    <h2>Lead Generation</h2>
+  
+    <!-- Status Filter -->
+    <div class="filter-container">
+      <label for="statusFilter">Filter by Status:</label>
+      <select id="statusFilter" [(ngModel)]="statusFilter" (change)="applyFilter()">
+        <option value="all">All</option>
+        <option value="new">New</option>
+        <option value="contacted">Contacted</option>
+        <option value="claimed">Claimed</option>
+      </select>
+    </div>
+  
+    <!-- Lead List -->
+    <ul>
+      <li *ngFor="let lead of filteredLeads">
+        <div class="lead-info">
+          <span class="name">{{ lead.name }}</span>
+          <span class="email">{{ lead.email }}</span>
+          <span class="status">{{ lead.status }}</span>
+        </div>
+  
+        <button *ngIf="lead.status === 'new'" (click)="claimLead(lead.id)">
+          Claim Lead
+        </button>
+      </li>
+  
+      <li *ngIf="filteredLeads.length === 0" class="no-leads">
+        No leads available.
+      </li>
+    </ul>
+  </div>
+  

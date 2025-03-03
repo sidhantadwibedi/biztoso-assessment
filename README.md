@@ -33,7 +33,8 @@ Search & Filter: Search by title and filter by price range.
 
 🛠️ Setup Instructions
 
-1. cd your-project-folder
+1. git clone https://github.com/sidhantadwibedi/biztoso-assessment.git
+2. cd your-project-folder
 
 Install Dependencies
 

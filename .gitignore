@@ -40,3 +40,13 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# Cache & Temp Files
+npm-debug.log*
+package-lock.json
+.cache/
+
+# Environment Files (sensitive info)
+*.env
+*.local
+src/environments/
